@@ -1,0 +1,26 @@
+#include <SoftwareSerial.h>
+#include <Servo.h>
+Servo servo;
+int servoPin = 9;
+int TX = 2;
+int RX = 3;
+SoftwareSerial bluetooth(TX,RX);
+
+void setup() {
+  servo.write(45);
+  servo.attach(servoPin);  // 서보 모터 연결 핀
+  bluetooth.begin(9600);
+}
+
+void loop() {
+  while(bluetooth.available()){
+    char data = bluetooth.read();
+    //Serial.print(bluetooth.read()); // 시리얼 모니터에 데이터 출력
+    if(data == 'c'){
+        servo.write(90); 
+    }
+    else if(data == 'o'){
+        servo.write(0);
+    }
+  }
+}
