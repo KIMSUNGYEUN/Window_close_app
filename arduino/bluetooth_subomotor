@@ -7,7 +7,7 @@ int RX = 3;
 SoftwareSerial bluetooth(TX,RX);
 
 void setup() {
-  servo.write(45);
+  servo.write(40);
   servo.attach(servoPin);  // 서보 모터 연결 핀
   bluetooth.begin(9600);
 }
@@ -20,8 +20,7 @@ void loop() {
         servo.write(90); 
     }
     else if(data == 'o'){
-        servo.write(0);
+        servo.write(40);
     }
   }
 }
-///
